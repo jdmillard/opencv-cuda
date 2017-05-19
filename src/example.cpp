@@ -4,6 +4,5 @@
 ExampleClass::ExampleClass()
 {
   std::cout << "instantiated" << std::endl;
-  //cv::Mat testmat;
 
 }
