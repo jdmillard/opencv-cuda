@@ -18,6 +18,7 @@ if(CUDA_FOUND)
   message(STATUS ${CUDA_INCLUDE_DIRS})
   message("   ")
 
+  add_definitions(-DCUDA=1)
   # CUDA is installed. It is assumed that OpenCV was compiled from source in
   # order to use the cv::gpu:: namespace. The library installation directory
   # is assumed to be /usr/local/share/OpenCV/ unless otherwise specified by the
@@ -34,6 +35,7 @@ if(CUDA_FOUND)
   message(STATUS ${OpenCV_DIR})
 
 else()
+  message( "   " )
   message(STATUS "CUDA was not found on this machine")
   message( "   " )
   message(STATUS "Using the OpenCV library from ROS:")
@@ -49,12 +51,13 @@ message(STATUS ${OpenCV_CONFIG_PATH})
 message("   ")
 
 # set include directory
-include_directories(include)
+include_directories(include
+                    ${OpenCV_INCLUDE_DIRS})
 
 # source files to compile
 add_executable(opencv-cuda
-                src/main.cpp
-                src/example.cpp)
+               src/main.cpp
+               src/example.cpp)
 
 # link OpenCV library
 target_link_libraries(opencv-cuda ${OpenCV_LIBS})

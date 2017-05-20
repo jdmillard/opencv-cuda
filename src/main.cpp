@@ -8,6 +8,17 @@ int main(int argc, char **argv)
   ExampleClass example_object;
 
 
+#if CUDA
+  std::cout << "cuda-only portion accessed" << std::endl;
+  // test creation of gpu mat
+  // https://stackoverflow.com/questions/19368244/compiling-error-cvgpu/19374970#19374970
+  cv::cuda::GpuMat frame2;
+  // IDEAS:
+  // create a function that can take either Mat of GpuMat
+  // preprossor define the namespace for the operations
+#endif
+
+
   // standard operation
   cv::namedWindow("Original", CV_WINDOW_AUTOSIZE);
   cv::namedWindow("Modified", CV_WINDOW_AUTOSIZE);
