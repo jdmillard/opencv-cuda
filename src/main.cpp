@@ -19,6 +19,9 @@ int main(int argc, char **argv)
 #endif
 
 
+
+
+
   // standard operation
   cv::namedWindow("Original", CV_WINDOW_AUTOSIZE);
   cv::namedWindow("Modified", CV_WINDOW_AUTOSIZE);
@@ -26,6 +29,7 @@ int main(int argc, char **argv)
   cv::moveWindow("Modified", 700, 50);
 
   cv::Mat frame = cv::imread("../images/castle.jpg");
+  example_object.add_mat(frame);
   cv::Mat frame_gray;
   cv::threshold(frame, frame_gray, 128.0, 255.0, CV_THRESH_BINARY);
 

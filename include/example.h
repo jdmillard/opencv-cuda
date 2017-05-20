@@ -5,10 +5,20 @@
 #include "opencv2/core.hpp"
 #include "opencv2/highgui.hpp"
 
-// cuda-only includes
+
 #if CUDA
-//#include <opencv2/gpu/gpu.hpp> // pre-3.0 method
-#include "opencv2/cudaarithm.hpp" // this one needs preprocessor 'if'
+
+// if CUDA is being used, include the appropriate headers
+//#include <opencv2/gpu/gpu.hpp> // pre-3.0 method !!
+#include "opencv2/cudaarithm.hpp"
+// define "universal Mat" as a Mat that lives in VRAM
+typedef cv::cuda::GpuMat uMat;
+
+#else
+
+// define "universal Mat" as a Mat that lives in RAM
+typedef cv::Mat uMat;
+
 #endif
 
 
@@ -16,6 +26,8 @@ class ExampleClass
 {
 public:
   ExampleClass();
+  void add_mat(cv::Mat);
+  uMat universalMat;
 private:
   int x_val_;
 };
