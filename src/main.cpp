@@ -30,6 +30,7 @@ int main(int argc, char **argv)
 
   cv::Mat frame = cv::imread("../images/castle.jpg");
   example_object.add_mat(frame);
+  example_object.example_operation();
   cv::Mat frame_gray;
   cv::threshold(frame, frame_gray, 128.0, 255.0, CV_THRESH_BINARY);
 

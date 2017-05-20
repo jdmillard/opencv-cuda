@@ -27,7 +27,8 @@ class ExampleClass
 public:
   ExampleClass();
   void add_mat(cv::Mat);
-  uMat universalMat;
+  void example_operation();
+  uMat universalMat1, universalMat2;
 private:
   int x_val_;
 };
