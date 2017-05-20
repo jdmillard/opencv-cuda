@@ -10,18 +10,18 @@ int main(int argc, char **argv)
   cv::moveWindow("Modified", 700, 50);
 
   // instantiate the class
-  ExampleClass example_object;
+  ExampleClass object;
 
   // load image
   cv::Mat frame = cv::imread("../images/castle.jpg");
-  cv::Mat frame_thresh2;
+  cv::Mat frame_thresh;
 
   // add frame to become data member
-  example_object.add_mat(frame);
-  example_object.example_operation();
-  frame_thresh2 = example_object.get_mat();
+  object.add_mat(frame);
+  object.operations();
+  frame_thresh = object.get_mat();
 
   cv::imshow("Original", frame);
-  cv::imshow("Modified", frame_thresh2);
+  cv::imshow("Modified", frame_thresh);
   cv::waitKey();
 }

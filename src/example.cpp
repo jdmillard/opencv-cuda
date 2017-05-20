@@ -31,7 +31,7 @@ void ExampleClass::add_mat(cv::Mat inMat)
 }
 
 
-void ExampleClass::example_operation()
+void ExampleClass::operations()
 {
   // perform operation on uMat class member
   std::cout << "starting operations" << std::endl;
