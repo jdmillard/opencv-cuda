@@ -11,8 +11,8 @@ export OpenCV_DIR=/custom/path/OpenCV/
 
 ### Run Commands
 ```bash
-TODO
-TOTO
+#TODO: CUDA specifics (relevant information from wiki)
+#TOTO: CUDA-enabled OpenCV specifics (relevant information from wiki)
 cd build/
 cmake ..
 make
