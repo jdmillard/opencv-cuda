@@ -1,11 +1,7 @@
 #include "example.h"
 
 
-#if CUDA
-  using namespace cv::cuda;
-#else
-  using namespace cv;
-#endif
+
 
 //using namespace std;
 
@@ -53,8 +49,9 @@ void ExampleClass::example_operation()
 
 
 
-  std::cout << "operations" << std::endl;
-  threshold(universalMat1, universalMat2, 128.0, 255.0, CV_THRESH_BINARY);
+  std::cout << "starting operations" << std::endl;
+  ucv::threshold(universalMat1, universalMat2, 128.0, 255.0, CV_THRESH_BINARY);
+  std::cout << "operations complete" << std::endl;
 
 
 }

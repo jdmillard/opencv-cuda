@@ -13,11 +13,15 @@
 #include "opencv2/cudaarithm.hpp"
 // define "universal Mat" as a Mat that lives in VRAM
 typedef cv::cuda::GpuMat uMat;
+// define namespace alias for operations (universal cv)
+namespace ucv = cv::cuda;
 
 #else
 
 // define "universal Mat" as a Mat that lives in RAM
 typedef cv::Mat uMat;
+// define namespace alias for operations (universal cv)
+namespace ucv = cv;
 
 #endif
 
