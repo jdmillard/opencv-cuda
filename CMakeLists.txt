@@ -7,9 +7,8 @@ set(CMAKE_CXX_STANDARD 11)
 project(opencv-cuda)
 
 # NOTE: a flaw is when a PC has CUDA but the user does not desire to use it
-# or does not have OpenCV compiled from source
+# or does not have CUDA-enabled OpenCV compiled from source.
 
-# a way to make find_package result silent?
 find_package(CUDA QUIET)
 if(CUDA_FOUND)
   message("   ")

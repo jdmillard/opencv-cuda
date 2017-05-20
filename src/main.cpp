@@ -24,7 +24,7 @@ int main(int argc, char **argv)
   object.operations();
   auto finish = std::chrono::high_resolution_clock::now();
   std::chrono::duration<double> elapsed = finish - start;
-  std::cout << "raw operation time: " << elapsed.count() << " s (not counting RAM or VRAM overhead)" << std::endl;
+  std::cout << "raw operation time: " << elapsed.count() << " s (excluding RAM/VRAM overhead)" << std::endl;
 
 
   // retrieve image
