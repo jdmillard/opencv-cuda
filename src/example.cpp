@@ -1,57 +1,69 @@
 #include "example.h"
 
 
-
-
-//using namespace std;
-
 ExampleClass::ExampleClass()
 {
-  std::cout << "instantiated" << std::endl;
-
+  std::cout << "ExampleClass instantiated" << std::endl;
 }
 
 
 void ExampleClass::add_mat(cv::Mat inMat)
 {
-
-  // The type uMat is defined in header based on the existence of CUDA.
+  // The uMat type is defined in the header depending on the existence of CUDA.
   // Assigning the uMat class member needs to consider this.
 
 #if CUDA
 
   // uMat is cv::cuda::GpuMat
-  std::cout << "assigning to GpuMat" << std::endl;
-  cv::cuda::GpuMat onGpuMat;
-  onGpuMat.upload(inMat);
-  // onGpuMat is now an OpenCV Mat on the VRAM
+  cv::cuda::GpuMat myGpuMat;
+  myGpuMat.upload(inMat);
+  // myGpuMat is now a deep copy of inMat on the VRAM
   // assign class member universalMat1 to this
-  universalMat1 = onGpuMat;
+  universalMat1 = myGpuMat;
 
 #else
 
   // uMat is cv::Mat
-  std::cout << "assigning to Mat" << std::endl;
   universalMat1 = inMat;
+  // unlike the GPU case above, this Mat lives in the RAM (not a deep copy)
 
 #endif
-
 }
+
 
 void ExampleClass::example_operation()
 {
   // perform operation on uMat class member
+  std::cout << "starting operations" << std::endl;
 
   // here is the syntax for cv::Mat and cv::cuda::GpuMat
   // cv::threshold(      src, dst, 128.0, 255.0, CV_THRESH_BINARY);
   // cv::cuda::threshold(src, dst, 128.0, 255.0, CV_THRESH_BINARY);
 
-
-
-
-  std::cout << "starting operations" << std::endl;
+  // using the universal namespace alias, this command represents both:
   ucv::threshold(universalMat1, universalMat2, 128.0, 255.0, CV_THRESH_BINARY);
+
   std::cout << "operations complete" << std::endl;
+}
 
 
+cv::Mat ExampleClass::get_mat()
+{
+  // The uMat type is defined in the header depending on the existence of CUDA.
+  // Getting the cv::Mat from the uMat class member needs to consider this.
+
+#if CUDA
+
+  // uMat is cv::cuda::GpuMat
+  // retrieve a deep copy of universalMat2 of type cv::Mat
+  cv::Mat result(universalMat2);
+  return result;
+
+#else
+
+  // uMat is cv::Mat
+  return universalMat2;
+  // unlike the GPU case above, this Mat lives in the RAM (not a deep copy)
+
+#endif
 }

@@ -25,17 +25,22 @@ int main(int argc, char **argv)
   // standard operation
   cv::namedWindow("Original", CV_WINDOW_AUTOSIZE);
   cv::namedWindow("Modified", CV_WINDOW_AUTOSIZE);
+  cv::namedWindow("Modified2", CV_WINDOW_AUTOSIZE);
   cv::moveWindow("Original", 50, 50);
   cv::moveWindow("Modified", 700, 50);
+  cv::moveWindow("Modified2", 50, 500);
 
   cv::Mat frame = cv::imread("../images/castle.jpg");
+  cv::Mat frame_thresh;
+  cv::threshold(frame, frame_thresh, 128.0, 255.0, CV_THRESH_BINARY);
+
   example_object.add_mat(frame);
   example_object.example_operation();
-  cv::Mat frame_gray;
-  cv::threshold(frame, frame_gray, 128.0, 255.0, CV_THRESH_BINARY);
+  cv::Mat frame_thresh2 = example_object.get_mat();
 
   cv::imshow("Original", frame);
-  cv::imshow("Modified", frame_gray);
+  cv::imshow("Modified", frame_thresh);
+  cv::imshow("Modified2", frame_thresh2);
   cv::waitKey();
 
 

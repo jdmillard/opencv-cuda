@@ -30,8 +30,10 @@ class ExampleClass
 {
 public:
   ExampleClass();
-  void add_mat(cv::Mat);
-  void example_operation();
+  void    add_mat(cv::Mat);
+  void    example_operation();
+  cv::Mat get_mat();
+
   uMat universalMat1, universalMat2;
 private:
   int x_val_;
