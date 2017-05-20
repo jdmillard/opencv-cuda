@@ -21,6 +21,8 @@ void ExampleClass::add_mat(cv::Mat inMat)
   // assign class member universalMat1 to this
   universalMat1 = myGpuMat;
 
+  // NOTE shorten to one line: universalMat1.upload(inMat);
+
 #else
 
   // uMat is cv::Mat
@@ -42,6 +44,10 @@ void ExampleClass::operations()
 
   // using the universal namespace alias, this command represents both:
   ucv::threshold(universalMat1, universalMat2, 128.0, 255.0, CV_THRESH_BINARY);
+  // NOTE OpenCV overloads functions like threshold so you don't need to
+  // specify the namespace, but I like this because in the case of an error
+  // you will be told that the command isn't found in cv::cuda:: or cv::
+  // rather than cryptic errors about input types.
 
   std::cout << "operations complete" << std::endl;
 }
