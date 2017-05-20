@@ -6,24 +6,32 @@ set(CMAKE_CXX_STANDARD 11)
 # set project name
 project(opencv-cuda)
 
-# NOTE: a flaw is when a PC has CUDA but the user does not desire to use it
-# or does not have CUDA-enabled OpenCV compiled from source.
+# The user has the ability to ignore CUDA and the CUDA-enabled OpenCV libraries
+# by manually creating and the environment variable IGNORE_CUDA to 1. This may
+# be helpful for benchmarking. Bash commands: export IGNORE_CUDA=1
+if(DEFINED ENV{IGNORE_CUDA})
+  set(IGNORE_CUDA $ENV{IGNORE_CUDA})
+  message(STATUS "CUDA ignore status is manually set to " ${IGNORE_CUDA})
+else()
+  set(IGNORE_CUDA 0)
+endif()
+
 
 find_package(CUDA QUIET)
-if(CUDA_FOUND)
-  message("   ")
+if(CUDA_FOUND AND NOT(IGNORE_CUDA))
   message(STATUS "CUDA was found on this machine")
   message(STATUS "version: " ${CUDA_VERSION})
   message(STATUS ${CUDA_INCLUDE_DIRS})
   message("   ")
 
+  # Add a definition to be used by the preprocessor directives
   add_definitions(-DCUDA=1)
+
   # CUDA is installed. It is assumed that OpenCV was compiled from source in
   # order to use the cv::gpu:: namespace. The library installation directory
   # is assumed to be /usr/local/share/OpenCV/ unless otherwise specified by the
   # existence of the environment variable OpenCV_DIR. Check if an environment
   # variable has been manually set.
-
   if(DEFINED ENV{OpenCV_DIR})
     message(STATUS "OpenCV library path manually specified:")
     set(OpenCV_DIR $ENV{OpenCV_DIR})
@@ -34,10 +42,13 @@ if(CUDA_FOUND)
   message(STATUS ${OpenCV_DIR})
 
 else()
+  if(IGNORE_CUDA)
+    message(STATUS "CUDA is being ignored by request")
+  else()
+    message(STATUS "CUDA was not found on this machine")
+  endif()
   message( "   " )
-  message(STATUS "CUDA was not found on this machine")
-  message( "   " )
-  message(STATUS "Using the OpenCV library from ROS:")
+  message(STATUS "Using the OpenCV library from ROS without GPU:")
   message(STATUS ${OpenCV_DIR})
 
 endif()
