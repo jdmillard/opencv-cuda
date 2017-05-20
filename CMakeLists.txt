@@ -7,8 +7,8 @@ set(CMAKE_CXX_STANDARD 11)
 project(opencv-cuda)
 
 # The user has the ability to ignore CUDA and the CUDA-enabled OpenCV libraries
-# by manually creating and the environment variable IGNORE_CUDA to 1. This may
-# be helpful for benchmarking. Bash commands: export IGNORE_CUDA=1
+# by manually creating and setting the environment variable IGNORE_CUDA to 1.
+# This may be helpful for benchmarking. Bash commands: export IGNORE_CUDA=1
 if(DEFINED ENV{IGNORE_CUDA})
   set(IGNORE_CUDA $ENV{IGNORE_CUDA})
   message(STATUS "CUDA ignore status is manually set to " ${IGNORE_CUDA})
