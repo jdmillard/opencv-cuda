@@ -6,6 +6,14 @@ set(CMAKE_CXX_STANDARD 11)
 # set project name
 project(opencv-testing)
 
+# find_package (BZip2)
+# if (BZIP2_FOUND)
+#   include_directories(${BZIP_INCLUDE_DIRS})
+#   target_link_libraries (helloworld ${BZIP2_LIBRARIES})
+# else (BZip2)
+#   stuffs
+# endif (BZIP2_FOUND)
+
 find_package(OpenCV REQUIRED)
 
 message( "   " )

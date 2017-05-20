@@ -5,8 +5,10 @@ Under Construction
 ### Some Specifics
 
 A working example with comments is provided.
-* install `CUDA`
-* compile `OpenCV` from source
+
+For automatic CUDA use the following is assumed
+* assumes installed `CUDA` and ran the test
+* compile `OpenCV` from source (with default install directory)
 * I need to figure out this `export OpenCV_DIR=/usr/local/share/OpenCV/` can it be but in `CMakeLists.txt`?
 
 ### Run Commands
