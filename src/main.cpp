@@ -18,7 +18,16 @@ int main(int argc, char **argv)
 
   // add frame to become data member
   object.add_mat(frame);
+
+  // perform operations on image
+  auto start = std::chrono::high_resolution_clock::now();
   object.operations();
+  auto finish = std::chrono::high_resolution_clock::now();
+  std::chrono::duration<double> elapsed = finish - start;
+  std::cout << "elapsed time: " << elapsed.count() << " s" << std::endl;
+
+
+  // retrieve image
   frame_thresh = object.get_mat();
 
   cv::imshow("Original", frame);
