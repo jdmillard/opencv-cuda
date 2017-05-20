@@ -8,6 +8,13 @@ project(opencv-testing)
 
 find_package(OpenCV REQUIRED)
 
+message( "   " )
+message( "-- " ${OpenCV_VERSION} )
+message( "-- " ${OpenCV_INCLUDE_DIRS} )
+message( "-- " ${OpenCV_INSTALL_PATH} )
+message( "-- " ${OpenCV_CONFIG_PATH} )
+message( "   " )
+
 # set include directory
 include_directories(include)
 
