@@ -1,4 +1,4 @@
-## OpenCV Testing
+## Automatic CUDA Operations in OpenCV
 
 This `OpenCV` project automatically detects if `CUDA` is installed, then compiles accordingly. Preprocessor directives are used to govern compilation such that the `cv::cuda::` namespace is used if possible. The result is a project that compiles, builds, and runs flawlessly with or without an available `CUDA` gpu.
 
