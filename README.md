@@ -2,6 +2,8 @@
 
 This `OpenCV` project automatically detects if `CUDA` is installed, then compiles accordingly. Preprocessor directives are used to govern compilation such that the `cv::cuda::` namespace is used if possible. The result is a project that compiles, builds, and runs flawlessly with or without an available `CUDA` GPU.
 
+Such structure provides the benefit of allowing the development of a single code base that can be used for various implementations, each with unique hardware constraints.
+
 ### Configuring CUDA and OpenCV
 You can **skip** this section if
 * You already have the `CUDA` library installed and `CUDA-enabled` `OpenCV` library installed (the latter needs to be compiled by your machine from source) **OR**
