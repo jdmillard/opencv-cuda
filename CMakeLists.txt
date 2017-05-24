@@ -1,10 +1,9 @@
 cmake_minimum_required(VERSION 2.8)
+project(opencv-cuda)
 
 # use c++ 11
 set(CMAKE_CXX_STANDARD 11)
-
-# set project name
-project(opencv-cuda)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-omit-frame-pointer -g3 -O3")
 
 # The user has the ability to ignore CUDA and the CUDA-enabled OpenCV libraries
 # by manually creating and setting the environment variable IGNORE_CUDA to 1.
@@ -71,3 +70,5 @@ add_executable(opencv-cuda
 
 # link OpenCV library
 target_link_libraries(opencv-cuda ${OpenCV_LIBS})
+
+add_subdirectory(benchmarks)

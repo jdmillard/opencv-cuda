@@ -3,7 +3,7 @@
 
 ExampleClass::ExampleClass()
 {
-  std::cout << "ExampleClass instantiated" << std::endl;
+  // std::cout << "ExampleClass instantiated" << std::endl;
 }
 
 
@@ -31,10 +31,10 @@ void ExampleClass::add_mat(cv::Mat inMat)
 void ExampleClass::operations()
 {
   // perform operation on uMat class member
-  std::cout << "starting operations" << std::endl;
+  // std::cout << "starting operations" << std::endl;
 
   // timer
-  auto start = std::chrono::high_resolution_clock::now();
+  // auto start = std::chrono::high_resolution_clock::now();
 
   // here is the syntax for cv::Mat and cv::cuda::GpuMat
   // cv::threshold(      src, dst, 128.0, 255.0, CV_THRESH_BINARY);
@@ -42,11 +42,11 @@ void ExampleClass::operations()
   // using the universal namespace alias, this command represents both:
   ucv::threshold(universalMat1, universalMat2, 128.0, 255.0, CV_THRESH_BINARY);
 
-  auto finish = std::chrono::high_resolution_clock::now();
-  std::chrono::duration<double> elapsed = finish - start;
-  std::cout << "raw operation time: " << elapsed.count() << " s (excluding RAM/VRAM overhead)" << std::endl;
+  // auto finish = std::chrono::high_resolution_clock::now();
+  // std::chrono::duration<double> elapsed = finish - start;
+  // std::cout << "raw operation time: " << elapsed.count() << " s (excluding RAM/VRAM overhead)" << std::endl;
   
-  std::cout << "operations complete" << std::endl;
+  // std::cout << "operations complete" << std::endl;
 }
 
 

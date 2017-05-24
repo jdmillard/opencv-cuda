@@ -19,8 +19,29 @@ int main(int argc, char **argv)
   // add frame to become data member
   object.add_mat(frame);
 
+
+  auto start = std::chrono::high_resolution_clock::now();
+
   // perform operations on image
   object.operations();
+
+  auto finish = std::chrono::high_resolution_clock::now();
+  std::chrono::duration<double> elapsed = finish - start;
+  std::cout << "raw operation time: " << elapsed.count() << " s (excluding RAM/VRAM overhead)" << std::endl;
+
+
+
+
+  start = std::chrono::high_resolution_clock::now();
+
+  // perform operations on image
+  object.operations();
+
+  finish = std::chrono::high_resolution_clock::now();
+  elapsed = finish - start;
+  std::cout << "raw operation time: " << elapsed.count() << " s (excluding RAM/VRAM overhead)" << std::endl;
+
+
 
   // retrieve image
   frame_thresh = object.get_mat();
